@@ -28,32 +28,36 @@ class ToDoManagerInteractor: ToDoManagerInteractorInput {
     var output: ToDoManagerInteractorOutput!
     private var currentAvailableTasks: [ListTask] = []
     private var currentCompletedTasks: [ListTask] = []
+    private let tasksWorker = TaskWorker(store: TaskCoreDataStore())
     
     var selectedTask: ListTask?
     
     // MARK: - Business logic
     
     func fetchTasks(_ request: ToDoManager.FetchTasks.Request) {
+        
         // NOTE: Create some Worker to do the work
-        let category = ListCategory(id: 0, name: "testando", color: "z")
-        let available1 = ListTask(name: "Buy bread", completionDate: nil, category: category, status: false)
-        let available2 = ListTask(name: "Buy milk", completionDate: Date(), category: category, status: false)
+        tasksWorker.fetchCompletedTasks(successHandler: { tasks in
+            // NOTE: Pass the result to the Presenter
+            self.currentCompletedTasks = tasks
+            let response = ToDoManager.FetchTasks.Response(availableTasks: self.currentAvailableTasks,
+                                                           completedTasks: self.currentCompletedTasks)
+            self.output.presentTasks(response)
+        }) { error in
+            
+            //
+        }
         
-        let completed1 = ListTask(name: "Buy car", completionDate: Date(), category: category, status: true)
-        let completed2 = ListTask(name: "Buy house", completionDate: Date(), category: category, status: true)
-        
-        
-        // FAZER O FETCH NO COREDATA
-        
-        
-        // PARTE COMUM,
-        currentAvailableTasks = [available1, available2]
-        currentCompletedTasks = [completed1, completed2]
-        
-        // NOTE: Pass the result to the Presenter
-        let response = ToDoManager.FetchTasks.Response(availableTasks: currentAvailableTasks,
-                                                       completedTasks: currentCompletedTasks)
-        output.presentTasks(response)
+        tasksWorker.fetchAvailableTasks(successHandler: { tasks in
+            // NOTE: Pass the result to the Presenter
+            self.currentAvailableTasks = tasks
+            let response = ToDoManager.FetchTasks.Response(availableTasks: self.currentAvailableTasks,
+                                                           completedTasks: self.currentCompletedTasks)
+            self.output.presentTasks(response)
+        }) { error in
+            
+            //
+        }
     }
     
     func willDeleteTask(_ request: ToDoManager.WillDeleteTask.Request) {

@@ -9,7 +9,6 @@
 import Foundation
 
 struct ListCategory {
-    let id: Int
     let name: String
     let color: String
 }

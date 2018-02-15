@@ -30,6 +30,9 @@ class TaskManipulationViewController: UIViewController {
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var categoryNameTextField: UITextField!
     
+    @IBOutlet weak var completionDateLabel: UILabel!
+    @IBOutlet weak var isCompletedSwitch: UISwitch!
+    
     var buttonState: ButtonState = .delete {
         didSet {
             updateButtonAppearance()
@@ -74,6 +77,8 @@ extension TaskManipulationViewController: TaskManipulationViewControllerInput {
     func displayTaskData(_ viewModel: TaskManipulation.FetchTaskData.ViewModel) {
         taskNameTextField.text = viewModel.taskName
         categoryNameTextField.text = viewModel.categoryName
+        completionDateLabel.text = viewModel.completionDate
+        isCompletedSwitch.setOn(viewModel.isCompleted, animated: true)
     }
 }
 

@@ -34,6 +34,8 @@ struct TaskManipulation {
         struct ViewModel {
             let taskName: String
             let categoryName: String
+            let completionDate: String
+            let isCompleted: Bool
         }
     }
 }
