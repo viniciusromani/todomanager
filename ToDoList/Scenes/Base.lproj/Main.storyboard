@@ -33,7 +33,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="To Do Manager" id="1Ec-6M-32M">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_nav_bar_settings" id="UD7-nx-g5o"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_nav_bar_settings" id="UD7-nx-g5o">
+                            <connections>
+                                <segue destination="4Le-fk-jBy" kind="presentation" id="hO9-US-aSI"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="ic_nav_bar_add" id="6UD-c8-94N">
                             <connections>
                                 <segue destination="K4L-ue-bz1" kind="show" identifier="addTaskSegue" id="4K5-9C-qHJ"/>
@@ -187,7 +191,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gxa-lr-oMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1084" y="124.58770614692655"/>
+            <point key="canvasLocation" x="1135" y="-365"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="k8t-hv-Ku9">
+            <objects>
+                <viewController id="9qp-Pj-Hmg" customClass="SettingsViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v7t-Pq-Ikv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Pbp-yL-vC1"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="f1K-H0-ZYd">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="2fO-ba-3bt">
+                            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <connections>
+                                <action selector="cancelButtonTouchedUp:" destination="9qp-Pj-Hmg" id="C7F-8s-EXX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qkZ-aS-urF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1914" y="412"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4jZ-Tv-EnE">
@@ -206,6 +233,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YWt-Tm-KZt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-548" y="126"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="l1M-wA-kQc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Le-fk-jBy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aFW-mv-E8l">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9qp-Pj-Hmg" kind="relationship" relationship="rootViewController" id="9ve-tI-Y3b"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tnw-gT-sos" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1132.8" y="411.99400299850078"/>
         </scene>
     </scenes>
     <resources>
