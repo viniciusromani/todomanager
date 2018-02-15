@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		46ED4E2C3C99198C2C2CE982 /* Pods_ToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE09E9A3C0B81CA7B83D1E6 /* Pods_ToDoList.framework */; };
+		A11B6BF42035E504004D9C3A /* TaskManipulationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BED2035E504004D9C3A /* TaskManipulationConfigurator.swift */; };
+		A11B6BF52035E504004D9C3A /* TaskManipulationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BEE2035E504004D9C3A /* TaskManipulationInteractor.swift */; };
+		A11B6BF62035E504004D9C3A /* TaskManipulationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BEF2035E504004D9C3A /* TaskManipulationModels.swift */; };
+		A11B6BF72035E504004D9C3A /* TaskManipulationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BF02035E504004D9C3A /* TaskManipulationPresenter.swift */; };
+		A11B6BF82035E504004D9C3A /* TaskManipulationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BF12035E504004D9C3A /* TaskManipulationRouter.swift */; };
+		A11B6BF92035E504004D9C3A /* TaskManipulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BF22035E504004D9C3A /* TaskManipulationViewController.swift */; };
+		A11B6BFC2035E6EC004D9C3A /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BFB2035E6EC004D9C3A /* Flow.swift */; };
 		A126C99E2034A43600BBE225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126C99D2034A43600BBE225 /* AppDelegate.swift */; };
 		A126C9A32034A43600BBE225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A126C9A12034A43600BBE225 /* Main.storyboard */; };
 		A126C9A62034A43600BBE225 /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A126C9A42034A43600BBE225 /* ToDoList.xcdatamodeld */; };
@@ -34,6 +41,13 @@
 		0BE09E9A3C0B81CA7B83D1E6 /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38F774C642D51C01C7CD5B4E /* Pods-ToDoList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList.debug.xcconfig"; sourceTree = "<group>"; };
 		929B9365917FCB541648DDBA /* Pods-ToDoList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList.release.xcconfig"; path = "Pods/Target Support Files/Pods-ToDoList/Pods-ToDoList.release.xcconfig"; sourceTree = "<group>"; };
+		A11B6BED2035E504004D9C3A /* TaskManipulationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManipulationConfigurator.swift; sourceTree = "<group>"; };
+		A11B6BEE2035E504004D9C3A /* TaskManipulationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManipulationInteractor.swift; sourceTree = "<group>"; };
+		A11B6BEF2035E504004D9C3A /* TaskManipulationModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManipulationModels.swift; sourceTree = "<group>"; };
+		A11B6BF02035E504004D9C3A /* TaskManipulationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManipulationPresenter.swift; sourceTree = "<group>"; };
+		A11B6BF12035E504004D9C3A /* TaskManipulationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManipulationRouter.swift; sourceTree = "<group>"; };
+		A11B6BF22035E504004D9C3A /* TaskManipulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManipulationViewController.swift; sourceTree = "<group>"; };
+		A11B6BFB2035E6EC004D9C3A /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		A126C99A2034A43600BBE225 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A126C99D2034A43600BBE225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A126C9A22034A43600BBE225 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,6 +101,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A11B6BEC2035E4D8004D9C3A /* Task Manipulation */ = {
+			isa = PBXGroup;
+			children = (
+				A11B6BF22035E504004D9C3A /* TaskManipulationViewController.swift */,
+				A11B6BEE2035E504004D9C3A /* TaskManipulationInteractor.swift */,
+				A11B6BF02035E504004D9C3A /* TaskManipulationPresenter.swift */,
+				A11B6BED2035E504004D9C3A /* TaskManipulationConfigurator.swift */,
+				A11B6BEF2035E504004D9C3A /* TaskManipulationModels.swift */,
+				A11B6BF12035E504004D9C3A /* TaskManipulationRouter.swift */,
+			);
+			path = "Task Manipulation";
+			sourceTree = "<group>";
+		};
 		A126C9912034A43600BBE225 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +150,7 @@
 		A126C9B22034A4C800BBE225 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A11B6BEC2035E4D8004D9C3A /* Task Manipulation */,
 				A126C9B42034B03F00BBE225 /* ToDo Manager */,
 			);
 			path = Scenes;
@@ -175,6 +203,7 @@
 		A126C9CB2034BCAA00BBE225 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				A11B6BFB2035E6EC004D9C3A /* Flow.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -355,8 +384,13 @@
 				A126C9C12034B08300BBE225 /* ToDoManagerViewController.swift in Sources */,
 				A126C9BC2034B08300BBE225 /* ToDoManagerConfigurator.swift in Sources */,
 				A126C9BD2034B08300BBE225 /* ToDoManagerInteractor.swift in Sources */,
+				A11B6BF72035E504004D9C3A /* TaskManipulationPresenter.swift in Sources */,
+				A11B6BF82035E504004D9C3A /* TaskManipulationRouter.swift in Sources */,
 				A126C9BE2034B08300BBE225 /* ToDoManagerModels.swift in Sources */,
+				A11B6BF42035E504004D9C3A /* TaskManipulationConfigurator.swift in Sources */,
+				A11B6BF92035E504004D9C3A /* TaskManipulationViewController.swift in Sources */,
 				A126C9BF2034B08300BBE225 /* ToDoManagerPresenter.swift in Sources */,
+				A11B6BF62035E504004D9C3A /* TaskManipulationModels.swift in Sources */,
 				A126C9DA2034CD5D00BBE225 /* Date+ToDoList.swift in Sources */,
 				A126C9D52034C63E00BBE225 /* Task.swift in Sources */,
 				A126C99E2034A43600BBE225 /* AppDelegate.swift in Sources */,
@@ -364,7 +398,9 @@
 				A126C9DD2034DABA00BBE225 /* AlertBuilder.swift in Sources */,
 				A126C9D02034C15A00BBE225 /* R.generated.swift in Sources */,
 				A126C9C82034B98000BBE225 /* ToDoTableViewCell.swift in Sources */,
+				A11B6BF52035E504004D9C3A /* TaskManipulationInteractor.swift in Sources */,
 				A126C9D32034C61100BBE225 /* Category.swift in Sources */,
+				A11B6BFC2035E6EC004D9C3A /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

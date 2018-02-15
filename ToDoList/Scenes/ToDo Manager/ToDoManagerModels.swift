@@ -56,4 +56,13 @@ struct ToDoManager {
             let completedTasks: [DisplayedTask]
         }
     }
+    
+    struct DidSelectRow {
+        struct Request {
+            let section: ToDoTableView.Section
+            let selectedRow: Int
+        }
+        struct Response { }
+        struct ViewModel { }
+    }
 }

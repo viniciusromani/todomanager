@@ -12,12 +12,14 @@ protocol ToDoManagerPresenterInput {
     func presentTasks(_ response: ToDoManager.FetchTasks.Response)
     func presentWillDeleteTask(_ response: ToDoManager.WillDeleteTask.Response)
     func presentDeletedTask(_ response: ToDoManager.DeleteTask.Response)
+    func presentSelectedRow(_ response: ToDoManager.DidSelectRow.Response)
 }
 
 protocol ToDoManagerPresenterOutput: class {
     func displayTasks(_ viewModel: ToDoManager.FetchTasks.ViewModel)
     func displayWillDeleteTask(_ viewModel: ToDoManager.WillDeleteTask.ViewModel)
     func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel)
+    func displaySelectedRow(_ viewModel: ToDoManager.DidSelectRow.ViewModel)
 }
 
 class ToDoManagerPresenter: ToDoManagerPresenterInput {
@@ -51,6 +53,11 @@ class ToDoManagerPresenter: ToDoManagerPresenterInput {
         let viewModel = ToDoManager.DeleteTask.ViewModel(availableTasks: available,
                                                          completedTasks: completed)
         output.displayDeletedTask(viewModel)
+    }
+    
+    func presentSelectedRow(_ response: ToDoManager.DidSelectRow.Response) {
+        let viewModel = ToDoManager.DidSelectRow.ViewModel()
+        output.displaySelectedRow(viewModel)
     }
 }
 

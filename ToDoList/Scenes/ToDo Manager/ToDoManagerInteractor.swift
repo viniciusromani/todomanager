@@ -9,21 +9,27 @@
 import UIKit
 
 protocol ToDoManagerInteractorInput {
+    var selectedTask: Task? { get set }
+    
     func fetchTasks(_ request: ToDoManager.FetchTasks.Request)
     func willDeleteTask(_ request: ToDoManager.WillDeleteTask.Request)
     func deleteTask(_ request: ToDoManager.DeleteTask.Request)
+    func didSelectRow(_ request: ToDoManager.DidSelectRow.Request)
 }
 
 protocol ToDoManagerInteractorOutput {
     func presentTasks(_ response: ToDoManager.FetchTasks.Response)
     func presentWillDeleteTask(_ response: ToDoManager.WillDeleteTask.Response)
     func presentDeletedTask(_ response: ToDoManager.DeleteTask.Response)
+    func presentSelectedRow(_ response: ToDoManager.DidSelectRow.Response)
 }
 
 class ToDoManagerInteractor: ToDoManagerInteractorInput {
     var output: ToDoManagerInteractorOutput!
     private var currentAvailableTasks: [Task] = []
     private var currentCompletedTasks: [Task] = []
+    
+    var selectedTask: Task?
     
     // MARK: - Business logic
     
@@ -64,5 +70,17 @@ class ToDoManagerInteractor: ToDoManagerInteractorInput {
         let response = ToDoManager.DeleteTask.Response(availableTasks: currentAvailableTasks,
                                                        completedTasks: currentCompletedTasks)
         output.presentDeletedTask(response)
+    }
+    
+    func didSelectRow(_ request: ToDoManager.DidSelectRow.Request) {
+        switch request.section {
+        case .available:
+            selectedTask = currentAvailableTasks[request.selectedRow]
+        case .completed:
+            selectedTask = currentCompletedTasks[request.selectedRow]
+        }
+        
+        let response = ToDoManager.DidSelectRow.Response()
+        output.presentSelectedRow(response)
     }
 }
