@@ -27,8 +27,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="gLT-F0-Dnw" secondAttribute="bottom" id="6oH-x0-4x1"/>
                                     <constraint firstAttribute="trailing" secondItem="gLT-F0-Dnw" secondAttribute="trailing" id="Fid-7G-e4E"/>
+                                    <constraint firstAttribute="bottom" secondItem="gLT-F0-Dnw" secondAttribute="bottom" id="LYp-kt-aav"/>
                                     <constraint firstItem="gLT-F0-Dnw" firstAttribute="leading" secondItem="4ff-kh-N85" secondAttribute="leading" id="hcH-M1-Duh"/>
                                     <constraint firstItem="gLT-F0-Dnw" firstAttribute="top" secondItem="4ff-kh-N85" secondAttribute="top" id="wrJ-lo-9fH"/>
                                 </constraints>
@@ -37,7 +37,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4ff-kh-N85" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0gB-HP-ndH"/>
-                            <constraint firstItem="4ff-kh-N85" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="H3a-O2-lYy"/>
+                            <constraint firstAttribute="bottom" secondItem="4ff-kh-N85" secondAttribute="bottom" id="PBI-Fw-fVZ"/>
                             <constraint firstItem="4ff-kh-N85" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aqe-LA-kek"/>
                             <constraint firstItem="4ff-kh-N85" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ygB-qs-RwZ"/>
                         </constraints>

@@ -25,9 +25,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lge-o7-kdj" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="1Xn-m7-84Y"/>
                             <constraint firstItem="lge-o7-kdj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TeR-LG-lcP"/>
                             <constraint firstItem="lge-o7-kdj" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="X2Q-pc-5Z1"/>
+                            <constraint firstAttribute="bottom" secondItem="lge-o7-kdj" secondAttribute="bottom" id="lAr-hZ-Myc"/>
                             <constraint firstItem="lge-o7-kdj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mUr-wR-I9W"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
