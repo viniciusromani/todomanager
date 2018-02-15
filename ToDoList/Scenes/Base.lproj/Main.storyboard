@@ -33,8 +33,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="To Do Manager" id="1Ec-6M-32M">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="UD7-nx-g5o"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6UD-c8-94N">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_nav_bar_settings" id="UD7-nx-g5o"/>
+                        <barButtonItem key="rightBarButtonItem" image="ic_nav_bar_add" id="6UD-c8-94N">
                             <connections>
                                 <segue destination="K4L-ue-bz1" kind="show" identifier="addTaskSegue" id="4K5-9C-qHJ"/>
                             </connections>
@@ -208,6 +208,10 @@
             <point key="canvasLocation" x="-548" y="126"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_nav_bar_add" width="20" height="20"/>
+        <image name="ic_nav_bar_settings" width="20" height="20"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Q46-TU-Zvb"/>
     </inferredMetricsTieBreakers>
