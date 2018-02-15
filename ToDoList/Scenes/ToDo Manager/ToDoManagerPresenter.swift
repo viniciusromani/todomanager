@@ -64,13 +64,13 @@ class ToDoManagerPresenter: ToDoManagerPresenterInput {
 // MARK: - Helper
 
 extension ToDoManagerPresenter {
-    private func taskToDisplayedTask(_ task: Task) -> DisplayedTask {
+    private func taskToDisplayedTask(_ task: ListTask) -> DisplayedTask {
         let displayedTask = DisplayedTask(title: task.name,
                                           completionDate: task.completionDate?.dayMonthYearStringValue,
                                           color: UIColor.green)
         return displayedTask
     }
-    private func tasksToDisplayedTasks(_ tasks: [Task]) -> [DisplayedTask] {
+    private func tasksToDisplayedTasks(_ tasks: [ListTask]) -> [DisplayedTask] {
         return tasks.flatMap { return taskToDisplayedTask($0) }
     }
 }

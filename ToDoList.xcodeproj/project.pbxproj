@@ -15,6 +15,8 @@
 		A11B6BF82035E504004D9C3A /* TaskManipulationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BF12035E504004D9C3A /* TaskManipulationRouter.swift */; };
 		A11B6BF92035E504004D9C3A /* TaskManipulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BF22035E504004D9C3A /* TaskManipulationViewController.swift */; };
 		A11B6BFC2035E6EC004D9C3A /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BFB2035E6EC004D9C3A /* Flow.swift */; };
+		A11B6C002035FCCB004D9C3A /* TaskWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BFF2035FCCB004D9C3A /* TaskWorker.swift */; };
+		A11B6C022036015A004D9C3A /* TaskCoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6C012036015A004D9C3A /* TaskCoreDataStore.swift */; };
 		A126C99E2034A43600BBE225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126C99D2034A43600BBE225 /* AppDelegate.swift */; };
 		A126C9A32034A43600BBE225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A126C9A12034A43600BBE225 /* Main.storyboard */; };
 		A126C9A62034A43600BBE225 /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A126C9A42034A43600BBE225 /* ToDoList.xcdatamodeld */; };
@@ -48,6 +50,8 @@
 		A11B6BF12035E504004D9C3A /* TaskManipulationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManipulationRouter.swift; sourceTree = "<group>"; };
 		A11B6BF22035E504004D9C3A /* TaskManipulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManipulationViewController.swift; sourceTree = "<group>"; };
 		A11B6BFB2035E6EC004D9C3A /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		A11B6BFF2035FCCB004D9C3A /* TaskWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskWorker.swift; sourceTree = "<group>"; };
+		A11B6C012036015A004D9C3A /* TaskCoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCoreDataStore.swift; sourceTree = "<group>"; };
 		A126C99A2034A43600BBE225 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A126C99D2034A43600BBE225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A126C9A22034A43600BBE225 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,6 +118,22 @@
 			path = "Task Manipulation";
 			sourceTree = "<group>";
 		};
+		A11B6BFD2035FC91004D9C3A /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				A11B6BFF2035FCCB004D9C3A /* TaskWorker.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		A11B6BFE2035FC97004D9C3A /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				A11B6C012036015A004D9C3A /* TaskCoreDataStore.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		A126C9912034A43600BBE225 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +155,8 @@
 		A126C99C2034A43600BBE225 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
+				A11B6BFE2035FC97004D9C3A /* Store */,
+				A11B6BFD2035FC91004D9C3A /* Worker */,
 				A126C9B22034A4C800BBE225 /* Scenes */,
 				A126C9D12034C60100BBE225 /* Models */,
 				A126C9CB2034BCAA00BBE225 /* Configuration */,
@@ -378,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A11B6C002035FCCB004D9C3A /* TaskWorker.swift in Sources */,
 				A126C9C52034B2B900BBE225 /* ToDoTableView.swift in Sources */,
 				A126C9A62034A43600BBE225 /* ToDoList.xcdatamodeld in Sources */,
 				A126C9C02034B08300BBE225 /* ToDoManagerRouter.swift in Sources */,
@@ -392,6 +415,7 @@
 				A126C9BF2034B08300BBE225 /* ToDoManagerPresenter.swift in Sources */,
 				A11B6BF62035E504004D9C3A /* TaskManipulationModels.swift in Sources */,
 				A126C9DA2034CD5D00BBE225 /* Date+ToDoList.swift in Sources */,
+				A11B6C022036015A004D9C3A /* TaskCoreDataStore.swift in Sources */,
 				A126C9D52034C63E00BBE225 /* Task.swift in Sources */,
 				A126C99E2034A43600BBE225 /* AppDelegate.swift in Sources */,
 				A126C9D82034CD5300BBE225 /* DateFormatter+ToDoList.swift in Sources */,

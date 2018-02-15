@@ -16,7 +16,7 @@ protocol ToDoManagerViewControllerInput {
 }
 
 protocol ToDoManagerViewControllerOutput {
-    var selectedTask: Task? { get }
+    var selectedTask: ListTask? { get }
     
     func fetchTasks(_ request: ToDoManager.FetchTasks.Request)
     func willDeleteTask(_ request: ToDoManager.WillDeleteTask.Request)

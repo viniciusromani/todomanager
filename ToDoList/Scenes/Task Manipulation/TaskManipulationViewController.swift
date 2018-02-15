@@ -15,7 +15,7 @@ protocol TaskManipulationViewControllerInput {
 
 protocol TaskManipulationViewControllerOutput {
     var flow: Flow { get set }
-    var selectedTask: Task? { get set }
+    var selectedTask: ListTask? { get set }
     
     func fetchInitialState(_ request: TaskManipulation.FetchInitialState.Request)
     func fetchTaskData(_ request: TaskManipulation.FetchTaskData.Request)
@@ -25,10 +25,16 @@ class TaskManipulationViewController: UIViewController {
     var output: TaskManipulationViewControllerOutput!
     var router: TaskManipulationRouter!
     
-    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var controlButton: UIButton!
     
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var categoryNameTextField: UITextField!
+    
+    var buttonState: ButtonState = .delete {
+        didSet {
+            updateButtonAppearance()
+        }
+    }
     
     // MARK: - Object lifecycle
 
@@ -47,7 +53,7 @@ class TaskManipulationViewController: UIViewController {
     
     // MARK: - Event Handling
     
-    @IBAction func deleteButtonTouchedUp(_ sender: UIButton) {
+    @IBAction func controlButtonTouchedUp(_ sender: UIButton) {
         
     }
 }
@@ -57,8 +63,8 @@ class TaskManipulationViewController: UIViewController {
 extension TaskManipulationViewController: TaskManipulationViewControllerInput {
     
     func displayInitialState(_ viewModel: TaskManipulation.FetchInitialState.ViewModel) {
-        navigationController?.title = viewModel.navigationTitle
-        deleteButton.isHidden = !viewModel.shouldShowDeleteButton
+        title = viewModel.navigationTitle
+        buttonState = viewModel.buttonState
         
         guard viewModel.flow == .isEditingTask else { return }
         let request = TaskManipulation.FetchTaskData.Request()
@@ -78,6 +84,17 @@ extension TaskManipulationViewController {
     private func fetchInitialState() {
         let request = TaskManipulation.FetchInitialState.Request()
         output.fetchInitialState(request)
+    }
+    
+    private func updateButtonAppearance() {
+        switch buttonState {
+        case .add:
+            controlButton.setTitle("Add Task", for: .normal)
+            controlButton.setTitleColor(UIColor.blue, for: .normal)
+        case .delete:
+            controlButton.setTitle("Delete Task", for: .normal)
+            controlButton.setTitleColor(UIColor.red, for: .normal)
+        }
     }
 }
 

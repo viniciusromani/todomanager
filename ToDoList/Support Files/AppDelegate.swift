@@ -17,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let cat = ListCategory(id: 0, name: "teste", color: "teste")
+        let task = ListTask(name: "Teste", completionDate: Date(), category: cat, status: true)
+        
+        let worker = TaskWorker(store: TaskCoreDataStore())
+        worker.saveTask(task)
+        
+        
         return true
     }
 

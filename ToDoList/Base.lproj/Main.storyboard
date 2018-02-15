@@ -139,7 +139,7 @@
                                             <color key="titleColor" red="0.91372549020000005" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="deleteButtonTouchedUp:" destination="K4L-ue-bz1" eventType="touchUpInside" id="EWV-uz-4Jm"/>
+                                            <action selector="controlButtonTouchedUp:" destination="K4L-ue-bz1" eventType="touchUpInside" id="wyr-Mm-fK9"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -165,7 +165,7 @@
                     <navigationItem key="navigationItem" title="Add Task" id="gOI-3W-6NP"/>
                     <connections>
                         <outlet property="categoryNameTextField" destination="VHK-ww-T0e" id="g9U-Am-Rap"/>
-                        <outlet property="deleteButton" destination="axC-V6-IHt" id="9Sn-Fn-Mgk"/>
+                        <outlet property="controlButton" destination="axC-V6-IHt" id="gyX-t9-Crl"/>
                         <outlet property="taskNameTextField" destination="xe0-51-ftL" id="alb-2m-DR4"/>
                     </connections>
                 </viewController>

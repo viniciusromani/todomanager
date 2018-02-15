@@ -18,8 +18,8 @@ struct ToDoManager {
     struct FetchTasks {
         struct Request { }
         struct Response {
-            let availableTasks: [Task]
-            let completedTasks: [Task]
+            let availableTasks: [ListTask]
+            let completedTasks: [ListTask]
         }
         struct ViewModel {
             let availableTasks: [DisplayedTask]
@@ -48,8 +48,8 @@ struct ToDoManager {
             let indexPath: IndexPath
         }
         struct Response {
-            let availableTasks: [Task]
-            let completedTasks: [Task]
+            let availableTasks: [ListTask]
+            let completedTasks: [ListTask]
         }
         struct ViewModel {
             let availableTasks: [DisplayedTask]

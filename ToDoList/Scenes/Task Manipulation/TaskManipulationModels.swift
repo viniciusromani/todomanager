@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum ButtonState {
+    case add
+    case delete
+}
+
 struct TaskManipulation {
     struct FetchInitialState {
         struct Request { }
@@ -17,14 +22,14 @@ struct TaskManipulation {
         struct ViewModel {
             let flow: Flow
             let navigationTitle: String
-            let shouldShowDeleteButton: Bool
+            let buttonState: ButtonState
         }
     }
     
     struct FetchTaskData {
         struct Request { }
         struct Response {
-            let task: Task
+            let task: ListTask
         }
         struct ViewModel {
             let taskName: String

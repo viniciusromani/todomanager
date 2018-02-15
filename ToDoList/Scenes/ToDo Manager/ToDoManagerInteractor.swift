@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ToDoManagerInteractorInput {
-    var selectedTask: Task? { get set }
+    var selectedTask: ListTask? { get set }
     
     func fetchTasks(_ request: ToDoManager.FetchTasks.Request)
     func willDeleteTask(_ request: ToDoManager.WillDeleteTask.Request)
@@ -26,21 +26,21 @@ protocol ToDoManagerInteractorOutput {
 
 class ToDoManagerInteractor: ToDoManagerInteractorInput {
     var output: ToDoManagerInteractorOutput!
-    private var currentAvailableTasks: [Task] = []
-    private var currentCompletedTasks: [Task] = []
+    private var currentAvailableTasks: [ListTask] = []
+    private var currentCompletedTasks: [ListTask] = []
     
-    var selectedTask: Task?
+    var selectedTask: ListTask?
     
     // MARK: - Business logic
     
     func fetchTasks(_ request: ToDoManager.FetchTasks.Request) {
         // NOTE: Create some Worker to do the work
-        let category = Category(id: 0, name: "testando", color: "z")
-        let available1 = Task(name: "Buy bread", completionDate: nil, category: category, status: false)
-        let available2 = Task(name: "Buy milk", completionDate: Date(), category: category, status: false)
+        let category = ListCategory(id: 0, name: "testando", color: "z")
+        let available1 = ListTask(name: "Buy bread", completionDate: nil, category: category, status: false)
+        let available2 = ListTask(name: "Buy milk", completionDate: Date(), category: category, status: false)
         
-        let completed1 = Task(name: "Buy car", completionDate: Date(), category: category, status: true)
-        let completed2 = Task(name: "Buy house", completionDate: Date(), category: category, status: true)
+        let completed1 = ListTask(name: "Buy car", completionDate: Date(), category: category, status: true)
+        let completed2 = ListTask(name: "Buy house", completionDate: Date(), category: category, status: true)
         
         
         // FAZER O FETCH NO COREDATA

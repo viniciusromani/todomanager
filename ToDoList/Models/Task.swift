@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct Task {
+struct ListTask {
     let name: String
     let completionDate: Date?
-    let category: Category
+    let category: ListCategory
     let status: Bool
 }

@@ -28,12 +28,12 @@ class TaskManipulationPresenter: TaskManipulationPresenterInput {
         case .isAddingTask:
             let viewModel = TaskManipulation.FetchInitialState.ViewModel(flow: response.flow,
                                                                          navigationTitle: "Add Task",
-                                                                         shouldShowDeleteButton: false)
+                                                                         buttonState: .add)
             output.displayInitialState(viewModel)
         case .isEditingTask:
             let viewModel = TaskManipulation.FetchInitialState.ViewModel(flow: response.flow,
                                                                          navigationTitle: "Task Details",
-                                                                         shouldShowDeleteButton: true)
+                                                                         buttonState: .delete)
             output.displayInitialState(viewModel)
         default: break
         }

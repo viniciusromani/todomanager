@@ -10,7 +10,7 @@ import UIKit
 
 protocol TaskManipulationInteractorInput {
     var flow: Flow { get }
-    var selectedTask: Task? { get }
+    var selectedTask: ListTask? { get }
     
     func fetchInitialState(_ request: TaskManipulation.FetchInitialState.Request)
     func fetchTaskData(_ request: TaskManipulation.FetchTaskData.Request)
@@ -24,7 +24,7 @@ protocol TaskManipulationInteractorOutput {
 class TaskManipulationInteractor: TaskManipulationInteractorInput {
     var output: TaskManipulationInteractorOutput!
     var flow: Flow = .none
-    var selectedTask: Task?
+    var selectedTask: ListTask?
     
     // MARK: - Business logic
     
