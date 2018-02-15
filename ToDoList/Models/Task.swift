@@ -7,10 +7,20 @@
 //
 
 import Foundation
+import CoreData
 
-struct Task {
+struct ListTask {
     let name: String
     let completionDate: Date?
-    let category: Category
+    let category: ListCategory
     let status: Bool
+}
+
+extension ListTask {
+    init(with managedObject: NSManagedObject) {
+        name = managedObject.value(forKey: "name") as! String
+        completionDate = managedObject.value(forKey: "completionDate") as? Date
+        category = ListCategory(name: "testando", color: "z")
+        status = managedObject.value(forKey: "status") as! Bool
+    }
 }

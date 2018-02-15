@@ -17,11 +17,11 @@ protocol ToDoTableViewDelegate {
 
 class ToDoTableView: UITableView {
     
-    private enum Section {
+    enum Section {
         case available
         case completed
     }
-    private let sectionMapper: [Section] = [.available, .completed]
+    let sectionMapper: [Section] = [.available, .completed]
     
     var displayedAvailableTasks: [DisplayedTask] = [] {
         didSet {
@@ -40,6 +40,7 @@ class ToDoTableView: UITableView {
 extension ToDoTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         customDelegate?.didSelect(tableView: tableView, at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -12,12 +12,16 @@ protocol ToDoManagerViewControllerInput {
     func displayTasks(_ viewModel: ToDoManager.FetchTasks.ViewModel)
     func displayWillDeleteTask(_ viewModel: ToDoManager.WillDeleteTask.ViewModel)
     func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel)
+    func displaySelectedRow(_ viewModel: ToDoManager.DidSelectRow.ViewModel)
 }
 
 protocol ToDoManagerViewControllerOutput {
+    var selectedTask: ListTask? { get }
+    
     func fetchTasks(_ request: ToDoManager.FetchTasks.Request)
     func willDeleteTask(_ request: ToDoManager.WillDeleteTask.Request)
     func deleteTask(_ request: ToDoManager.DeleteTask.Request)
+    func didSelectRow(_ request: ToDoManager.DidSelectRow.Request)
 }
 
 class ToDoManagerViewController: UIViewController {
@@ -72,6 +76,10 @@ extension ToDoManagerViewController: ToDoManagerViewControllerInput {
         toDoTableView.displayedAvailableTasks = viewModel.availableTasks
         toDoTableView.displayedCompletedTasks = viewModel.completedTasks
     }
+    
+    func displaySelectedRow(_ viewModel: ToDoManager.DidSelectRow.ViewModel) {
+        router.navigateToTaskDetails()
+    }
 }
 
 // MARK: - TableView Custom Delegate
@@ -86,7 +94,9 @@ extension ToDoManagerViewController: ToDoTableViewDelegate {
     }
     
     func didSelect(tableView table: UITableView, at indexPath: IndexPath) {
-        //
+        let request = ToDoManager.DidSelectRow.Request(section: toDoTableView.sectionMapper[indexPath.section],
+                                                       selectedRow: indexPath.row)
+        output.didSelectRow(request)
     }
     
     func willDeleteItem(at indexPath: IndexPath, in tableView: UITableView) {

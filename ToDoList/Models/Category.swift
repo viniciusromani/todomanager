@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct Category {
-    let id: Int
+struct ListCategory {
     let name: String
     let color: String
 }

@@ -9,32 +9,49 @@
 import UIKit
 
 protocol ToDoManagerRouterInput {
-    func navigateToSomewhere()
+    func navigateToTaskDetails()
 }
 
 class ToDoManagerRouter: ToDoManagerRouterInput {
     weak var viewController: ToDoManagerViewController!
     
+    let addTaskSegue = R.segue.toDoManagerViewController.addTaskSegue
+    let taskDetailsSegue = R.segue.toDoManagerViewController.taskDetailsSegue
+    
     // MARK: - Navigation
     
-    func navigateToSomewhere() {
-        
+    func navigateToTaskDetails() {
+        viewController.performSegue(withIdentifier: taskDetailsSegue, sender: nil)
     }
     
     // MARK: - Communication
     
     func passDataToNextScene(segue: UIStoryboardSegue) {
         // NOTE: Teach the router which scenes it can communicate with
-        
-        if segue.identifier == "ShowSomewhereScene" {
-            passDataToSomewhereScene(segue: segue)
+        switch segue.identifier {
+        case addTaskSegue.identifier?:
+            passDataToAddTaskScene(segue: segue)
+        case taskDetailsSegue.identifier?:
+            passDataToTaskDetailsScene(segue: segue)
+        default: break
         }
     }
-    
-    func passDataToSomewhereScene(segue: UIStoryboardSegue) {
+}
+
+// MARK: - Helper
+
+extension ToDoManagerRouter {
+    private func passDataToAddTaskScene(segue: UIStoryboardSegue) {
         // NOTE: Teach the router how to pass data to the next scene
-        
-        // let someWhereViewController = segue.destinationViewController as! SomeWhereViewController
-        // someWhereViewController.output.name = viewController.output.name
+        guard let addTaskViewController = segue.destination as? TaskManipulationViewController else { return }
+        addTaskViewController.output.flow = .isAddingTask
+        addTaskViewController.output.selectedTask = viewController.output.selectedTask
+    }
+    
+    private func passDataToTaskDetailsScene(segue: UIStoryboardSegue) {
+        // NOTE: Teach the router how to pass data to the next scene
+        guard let addTaskViewController = segue.destination as? TaskManipulationViewController else { return }
+        addTaskViewController.output.flow = .isEditingTask
+        addTaskViewController.output.selectedTask = viewController.output.selectedTask
     }
 }
