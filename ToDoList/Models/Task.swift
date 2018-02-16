@@ -13,7 +13,7 @@ import UIKit
 struct ListTask {
     let name: String
     let completionDate: Date?
-    let category: ListCategory
+    let category: ListCategory?
     let status: Bool
 }
 
@@ -21,7 +21,7 @@ extension ListTask {
     init(with managedObject: NSManagedObject) {
         name = managedObject.value(forKey: "name") as! String
         completionDate = managedObject.value(forKey: "completionDate") as? Date
-        category = ListCategory(name: "testando", color: UIColor.blue)
+        category = ListCategory(with: managedObject.value(forKey: "category")  as? NSManagedObject)
         status = managedObject.value(forKey: "status") as! Bool
     }
 }

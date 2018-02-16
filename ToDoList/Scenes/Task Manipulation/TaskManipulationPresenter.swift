@@ -49,7 +49,7 @@ class TaskManipulationPresenter: TaskManipulationPresenterInput {
     func presentTaskData(_ response: TaskManipulation.FetchTaskData.Response) {
         let task = response.task
         let viewModel = TaskManipulation.FetchTaskData.ViewModel(taskName: task.name,
-                                                                 categoryName: task.category.name,
+                                                                 categoryName: task.category?.name ?? "",
                                                                  completionDate: task.completionDate?.dayMonthYearStringValue ?? "-",
                                                                  isCompleted: task.status)
         output.displayTaskData(viewModel)

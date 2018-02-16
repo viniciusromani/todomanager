@@ -8,8 +8,17 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 struct ListCategory {
     let name: String
-    let color: UIColor
+    let color: UIColor?
+}
+
+extension ListCategory {
+    init?(with managedObject: NSManagedObject?) {
+        guard let object = managedObject else { return nil }
+        name = object.value(forKey: "name") as! String
+        color = UIColor.color(withData: object.value(forKey: "color") as? Data)
+    }
 }

@@ -64,7 +64,10 @@ class TaskManipulationTableViewController: UITableViewController {
     // MARK: - Event Handling
     
     @IBAction func controlButtonTouchedUp(_ sender: UIButton) {
-        
+        switch buttonState {
+        case .add: addTask()
+        case .delete: deleteTask()
+        }
     }
 }
 
@@ -156,6 +159,10 @@ extension TaskManipulationTableViewController {
                                                        completionDate: completionDateTextField.text,
                                                        status: isCompletedSwitch.isOn)
         output.addTask(request)
+    }
+    
+    private func deleteTask() {
+        
     }
 }
 

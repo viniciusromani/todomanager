@@ -39,8 +39,9 @@ extension UIColor {
 // MARK: - Helper to be used in core data
 
 extension UIColor {
-    class func color(withData data:Data) -> UIColor {
-        return NSKeyedUnarchiver.unarchiveObject(with: data) as! UIColor
+    class func color(withData data: Data?) -> UIColor? {
+        guard let dat = data else { return nil }
+        return NSKeyedUnarchiver.unarchiveObject(with: dat) as? UIColor
     }
     
     func encoded() -> Data {

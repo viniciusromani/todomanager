@@ -19,13 +19,21 @@ class TaskCoreDataStore: TaskStoreProtocol {
                   errorHandler: @escaping(_ error: Error?) -> Void) {
         
         let context = appDelegate.persistentContainer.viewContext
-        let taskEntity = NSEntityDescription.entity(forEntityName: "Task", in: context)
-        let newTask = NSManagedObject(entity: taskEntity!, insertInto: context)
+        guard let taskEntity = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context) as? Task else {
+            errorHandler(NSError(domain: "Invalid Task Entity", code: 400, userInfo: nil))
+            return
+        }
+        guard let categoryEntity = NSEntityDescription.insertNewObject(forEntityName: "Category", into: context) as? Category else {
+            errorHandler(NSError(domain: "Invalid Category Entity", code: 400, userInfo: nil))
+            return
+        }
+        categoryEntity.name = task.category?.name
+        categoryEntity.color = taskEntity.category?.color
         
-        newTask.setValue(task.name, forKey: "name")
-//        newTask.setValue(task.name, forKey: "category")
-        newTask.setValue(task.status, forKey: "status")
-        newTask.setValue(task.completionDate, forKey: "completionDate")
+        taskEntity.category = categoryEntity
+        taskEntity.name = task.name
+        taskEntity.status = task.status
+        taskEntity.completionDate = task.completionDate
         
         do {
             try context.save()

@@ -19,11 +19,12 @@ class CategoryCoreDataStore: CategoryStoreProtocol {
                       errorHandler: @escaping (Error?) -> Void) {
         
         let context = appDelegate.persistentContainer.viewContext
-        let taskEntity = NSEntityDescription.entity(forEntityName: "Category", in: context)
-        let newTask = NSManagedObject(entity: taskEntity!, insertInto: context)
-        
-        newTask.setValue(category.name, forKey: "name")
-        newTask.setValue(category.color.encoded(), forKey: "color")
+        guard let categoryEntity = NSEntityDescription.insertNewObject(forEntityName: "Category", into: context) as? Category else {
+            errorHandler(NSError(domain: "Invalid Category Entity", code: 400, userInfo: nil))
+            return
+        }
+        categoryEntity.name = category.name
+        categoryEntity.color = category.color
         
         do {
             try context.save()

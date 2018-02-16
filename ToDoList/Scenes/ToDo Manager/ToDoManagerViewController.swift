@@ -30,6 +30,8 @@ class ToDoManagerViewController: UIViewController {
 
     @IBOutlet weak var toDoTableView: ToDoTableView!
     
+    let refreshControl = UIRefreshControl()
+    
     // MARK: - Object lifecycle
 
     override func awakeFromNib() {
@@ -43,6 +45,7 @@ class ToDoManagerViewController: UIViewController {
         super.viewDidLoad()
         
         configure(toDoTableView: toDoTableView)
+        setPullToRefresh()
         fetchTasks()
     }
 }
@@ -53,6 +56,7 @@ extension ToDoManagerViewController: ToDoManagerViewControllerInput {
     
     func displayTasks(_ viewModel: ToDoManager.FetchTasks.ViewModel) {
         // NOTE: Display the result from the Presenter
+        refreshControl.endRefreshing()
         toDoTableView.displayedAvailableTasks = viewModel.availableTasks
         toDoTableView.displayedCompletedTasks = viewModel.completedTasks
     }
@@ -112,6 +116,15 @@ extension ToDoManagerViewController {
     private func fetchTasks() {
         let request = ToDoManager.FetchTasks.Request()
         output.fetchTasks(request)
+    }
+    
+    private func setPullToRefresh() {
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        toDoTableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh() {
+        fetchTasks()
     }
 }
 
