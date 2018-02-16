@@ -38,4 +38,57 @@ struct TaskManipulation {
             let isCompleted: Bool
         }
     }
+    
+    struct StoreColor {
+        struct Request {
+            let color: UIColor
+        }
+        struct Response { }
+        struct ViewModel { }
+    }
+    
+    struct AddTask {
+        struct Request {
+            let name: String
+            let categoryName: String
+            let completionDate: String?
+            let status: Bool
+        }
+        struct Response {
+            struct Success { }
+            struct Error {
+                let localizedError: String
+            }
+        }
+        struct ViewModel {
+            struct Success {
+                let title: String
+                let message: String
+            }
+            struct Error {
+                let title: String
+                let message: String
+            }
+        }
+    }
+    
+    struct DeleteTask {
+        struct Request { }
+        struct Response {
+            struct Success { }
+            struct Error {
+                let localizedError: String
+            }
+        }
+        struct ViewModel {
+            struct Success {
+                let title: String
+                let message: String
+            }
+            struct Error {
+                let title: String
+                let message: String
+            }
+        }
+    }
 }

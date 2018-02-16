@@ -11,14 +11,16 @@ import UIKit
 protocol ToDoManagerPresenterInput {
     func presentTasks(_ response: ToDoManager.FetchTasks.Response)
     func presentWillDeleteTask(_ response: ToDoManager.WillDeleteTask.Response)
-    func presentDeletedTask(_ response: ToDoManager.DeleteTask.Response)
+    func presentDeletedTask(_ response: ToDoManager.DeleteTask.Response.Success)
+    func presentErrorOnDelete(_ response: ToDoManager.DeleteTask.Response.Error)
     func presentSelectedRow(_ response: ToDoManager.DidSelectRow.Response)
 }
 
 protocol ToDoManagerPresenterOutput: class {
     func displayTasks(_ viewModel: ToDoManager.FetchTasks.ViewModel)
     func displayWillDeleteTask(_ viewModel: ToDoManager.WillDeleteTask.ViewModel)
-    func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel)
+    func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel.Success)
+    func displayErrorOnDelete(_ viewModel: ToDoManager.DeleteTask.ViewModel.Error)
     func displaySelectedRow(_ viewModel: ToDoManager.DidSelectRow.ViewModel)
 }
 
@@ -42,17 +44,24 @@ class ToDoManagerPresenter: ToDoManagerPresenterInput {
                                                              message: "Are you sure you want to delete?",
                                                              yesActionData: (title: "Yes", style: .default),
                                                              noActionData: (title: "No", style: .default),
-                                                             selectedIndexPath: response.selectedIndexPath)
+                                                             section: response.section,
+                                                             selectedRow: response.selectedRow)
         output.displayWillDeleteTask(viewModel)
     }
     
-    func presentDeletedTask(_ response: ToDoManager.DeleteTask.Response) {
+    
+    func presentDeletedTask(_ response: ToDoManager.DeleteTask.Response.Success) {
         let available = tasksToDisplayedTasks(response.availableTasks)
         let completed = tasksToDisplayedTasks(response.completedTasks)
         
-        let viewModel = ToDoManager.DeleteTask.ViewModel(availableTasks: available,
-                                                         completedTasks: completed)
+        let viewModel = ToDoManager.DeleteTask.ViewModel.Success(availableTasks: available,
+                                                                 completedTasks: completed)
         output.displayDeletedTask(viewModel)
+    }
+    
+    func presentErrorOnDelete(_ response: ToDoManager.DeleteTask.Response.Error) {
+        let viewModel = ToDoManager.DeleteTask.ViewModel.Error(title: "Error", message: response.localizedMessage)
+        output.displayErrorOnDelete(viewModel)
     }
     
     func presentSelectedRow(_ response: ToDoManager.DidSelectRow.Response) {

@@ -55,7 +55,14 @@ extension ToDoTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let enumSection = sectionMapper[section]
         switch enumSection {
-        case .available: return displayedAvailableTasks.count
+        case .available:
+            if displayedAvailableTasks.count > 0 {
+                return displayedAvailableTasks.count
+            } else if displayedCompletedTasks.count > 0 {
+                return displayedCompletedTasks.count
+            } else {
+                return 0
+            }
         case .completed: return displayedCompletedTasks.count
         }
     }
@@ -66,10 +73,15 @@ extension ToDoTableView: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        var displayedTask: DisplayedTask
+        var displayedTask: DisplayedTask? = nil
         let enumSection = sectionMapper[indexPath.section]
         switch enumSection {
-            case .available: displayedTask = displayedAvailableTasks[indexPath.row]
+            case .available:
+                if displayedAvailableTasks.count > 0 {
+                    displayedTask = displayedAvailableTasks[indexPath.row]
+                } else if displayedCompletedTasks.count > 0 {
+                    displayedTask = displayedCompletedTasks[indexPath.row]
+                }
             case .completed: displayedTask = displayedCompletedTasks[indexPath.row]
         }
         cell.configure(with: displayedTask)
@@ -79,7 +91,14 @@ extension ToDoTableView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let enumSection = sectionMapper[section]
         switch enumSection {
-        case .available: return "Available Tasks"
+        case .available:
+            var sectionName: String? = nil
+            if displayedAvailableTasks.count > 0 {
+                sectionName = "Available Tasks"
+            } else if displayedCompletedTasks.count > 0 {
+                sectionName = "Completed Tasks"
+            }
+            return sectionName
         case .completed: return "Completed Tasks"
         }
     }

@@ -17,6 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // create the delete request for the specified entity
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+//
+//        // get reference to the persistent container
+//        let persistentContainer = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
+//
+//        // perform the delete
+//        do {
+//            try persistentContainer.viewContext.execute(deleteRequest)
+//        } catch let error as NSError {
+//            print(error)
+//        }
+        
         return true
     }
 

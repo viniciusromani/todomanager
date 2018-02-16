@@ -13,8 +13,8 @@ class ToDoTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    func configure(with displayedTask: DisplayedTask) {
-        titleLabel.text = displayedTask.title
-        dateLabel.text = displayedTask.completionDate
+    func configure(with displayedTask: DisplayedTask?) {
+        titleLabel.text = displayedTask?.title ?? "-"
+        dateLabel.text = displayedTask?.completionDate ?? "-"
     }
 }

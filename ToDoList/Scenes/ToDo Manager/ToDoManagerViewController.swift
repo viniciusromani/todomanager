@@ -11,7 +11,8 @@ import UIKit
 protocol ToDoManagerViewControllerInput {
     func displayTasks(_ viewModel: ToDoManager.FetchTasks.ViewModel)
     func displayWillDeleteTask(_ viewModel: ToDoManager.WillDeleteTask.ViewModel)
-    func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel)
+    func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel.Success)
+    func displayErrorOnDelete(_ viewModel: ToDoManager.DeleteTask.ViewModel.Error)
     func displaySelectedRow(_ viewModel: ToDoManager.DidSelectRow.ViewModel)
 }
 
@@ -30,6 +31,8 @@ class ToDoManagerViewController: UIViewController {
 
     @IBOutlet weak var toDoTableView: ToDoTableView!
     
+    let refreshControl = UIRefreshControl()
+    
     // MARK: - Object lifecycle
 
     override func awakeFromNib() {
@@ -43,6 +46,12 @@ class ToDoManagerViewController: UIViewController {
         super.viewDidLoad()
         
         configure(toDoTableView: toDoTableView)
+        setPullToRefresh()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         fetchTasks()
     }
 }
@@ -53,16 +62,18 @@ extension ToDoManagerViewController: ToDoManagerViewControllerInput {
     
     func displayTasks(_ viewModel: ToDoManager.FetchTasks.ViewModel) {
         // NOTE: Display the result from the Presenter
+        refreshControl.endRefreshing()
         toDoTableView.displayedAvailableTasks = viewModel.availableTasks
         toDoTableView.displayedCompletedTasks = viewModel.completedTasks
     }
     
     func displayWillDeleteTask(_ viewModel: ToDoManager.WillDeleteTask.ViewModel) {
         let yesAction = UIAlertAction(title: viewModel.yesActionData.title, style: viewModel.yesActionData.style) { action in
-            let request = ToDoManager.DeleteTask.Request(indexPath: viewModel.selectedIndexPath)
+            let request = ToDoManager.DeleteTask.Request(section: viewModel.section,
+                                                         selectedRow: viewModel.selectedRow)
             self.output.deleteTask(request)
         }
-        let noAction = UIAlertAction(title: viewModel.noActionData.title, style: viewModel.noActionData.style)
+        let noAction = AlertActionBuilder(dismissWithTitle: viewModel.noActionData.title).build()
         
         let willDeleteAlert = AlertBuilder()
                               .setTitle(viewModel.title)
@@ -72,9 +83,20 @@ extension ToDoManagerViewController: ToDoManagerViewControllerInput {
         present(willDeleteAlert, animated: true, completion: nil)
     }
     
-    func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel) {
+    func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel.Success) {
         toDoTableView.displayedAvailableTasks = viewModel.availableTasks
         toDoTableView.displayedCompletedTasks = viewModel.completedTasks
+    }
+    
+    func displayErrorOnDelete(_ viewModel: ToDoManager.DeleteTask.ViewModel.Error) {
+        let okAction = AlertActionBuilder(dismissWithTitle: "OK").build()
+        
+        let willDeleteAlert = AlertBuilder()
+                              .setTitle(viewModel.title)
+                              .setMessage(viewModel.message)
+                              .setAction(okAction)
+                              .build()
+        present(willDeleteAlert, animated: true, completion: nil)
     }
     
     func displaySelectedRow(_ viewModel: ToDoManager.DidSelectRow.ViewModel) {
@@ -100,7 +122,8 @@ extension ToDoManagerViewController: ToDoTableViewDelegate {
     }
     
     func willDeleteItem(at indexPath: IndexPath, in tableView: UITableView) {
-        let request = ToDoManager.WillDeleteTask.Request(selectedIndexPath: indexPath)
+        let request = ToDoManager.WillDeleteTask.Request(section: toDoTableView.sectionMapper[indexPath.section],
+                                                         selectedRow: indexPath.row)
         output.willDeleteTask(request)
     }
 }
@@ -112,6 +135,15 @@ extension ToDoManagerViewController {
     private func fetchTasks() {
         let request = ToDoManager.FetchTasks.Request()
         output.fetchTasks(request)
+    }
+    
+    private func setPullToRefresh() {
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        toDoTableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh() {
+        fetchTasks()
     }
 }
 

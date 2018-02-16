@@ -31,6 +31,12 @@ class TaskWorker {
                              errorHandler: @escaping(_ error: Error?) -> Void) {
         store.fetchAvailableTasks(successHandler: successHandler, errorHandler: errorHandler)
     }
+    
+    func deleteTask(_ task: ListTask,
+                    successHandler: @escaping () -> Void,
+                    errorHandler: @escaping(_ error: Error?) -> Void) {
+        store.deleteTask(task, successHandler: successHandler, errorHandler: errorHandler)
+    }
 }
 
 protocol TaskStoreProtocol {
@@ -43,6 +49,10 @@ protocol TaskStoreProtocol {
     
     func fetchAvailableTasks(successHandler: @escaping (_ tasks: [ListTask]) -> Void,
                              errorHandler: @escaping(_ error: Error?) -> Void)
+    
+    func deleteTask(_ task: ListTask,
+                    successHandler: @escaping () -> Void,
+                    errorHandler: @escaping(_ error: Error?) -> Void)
 }
 
 

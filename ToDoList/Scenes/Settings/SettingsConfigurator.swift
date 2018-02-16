@@ -2,7 +2,7 @@
 //  SettingsConfigurator.swift
 //  ToDoList
 //
-//  Created by Vinicius Romani on 15/02/18.
+//  Created by Vinicius Romani on 16/02/18.
 //  Copyright (c) 2018 Vinicius Romani. All rights reserved.
 //
 
@@ -10,13 +10,13 @@ import UIKit
 
 // MARK: - Connect View, Interactor, and Presenter
 
-extension SettingsViewController: SettingsPresenterOutput {
+extension SettingsTableViewController: SettingsPresenterOutput {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue: segue)
     }
 }
 
-extension SettingsInteractor: SettingsViewControllerOutput {
+extension SettingsInteractor: SettingsTableViewControllerOutput {
 }
 
 extension SettingsPresenter: SettingsInteractorOutput {
@@ -31,7 +31,7 @@ class SettingsConfigurator {
     
     // MARK: - Configuration
     
-    func configure(viewController: SettingsViewController) {
+    func configure(viewController: SettingsTableViewController) {
         let router = SettingsRouter()
         router.viewController = viewController
         

@@ -29,31 +29,46 @@ struct ToDoManager {
     
     struct WillDeleteTask {
         struct Request {
-            let selectedIndexPath: IndexPath
+            let section: ToDoTableView.Section
+            let selectedRow: Int
         }
         struct Response {
-            let selectedIndexPath: IndexPath
+            let section: ToDoTableView.Section
+            let selectedRow: Int
         }
         struct ViewModel {
             let title: String
             let message: String
             let yesActionData: (title: String, style: UIAlertActionStyle)
             let noActionData: (title: String, style: UIAlertActionStyle)
-            let selectedIndexPath: IndexPath
+            let section: ToDoTableView.Section
+            let selectedRow: Int
         }
     }
     
     struct DeleteTask {
         struct Request {
-            let indexPath: IndexPath
+            let section: ToDoTableView.Section
+            let selectedRow: Int
         }
         struct Response {
-            let availableTasks: [ListTask]
-            let completedTasks: [ListTask]
+            struct Success {
+                let availableTasks: [ListTask]
+                let completedTasks: [ListTask]
+            }
+            struct Error {
+                let localizedMessage: String
+            }
         }
         struct ViewModel {
-            let availableTasks: [DisplayedTask]
-            let completedTasks: [DisplayedTask]
+            struct Success {
+                let availableTasks: [DisplayedTask]
+                let completedTasks: [DisplayedTask]
+            }
+            struct Error {
+                let title: String
+                let message: String
+            }
         }
     }
     

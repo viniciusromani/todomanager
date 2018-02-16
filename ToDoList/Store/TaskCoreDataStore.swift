@@ -19,13 +19,21 @@ class TaskCoreDataStore: TaskStoreProtocol {
                   errorHandler: @escaping(_ error: Error?) -> Void) {
         
         let context = appDelegate.persistentContainer.viewContext
-        let taskEntity = NSEntityDescription.entity(forEntityName: "Task", in: context)
-        let newTask = NSManagedObject(entity: taskEntity!, insertInto: context)
+        guard let taskEntity = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context) as? Task else {
+            errorHandler(NSError(domain: "Invalid Task Entity", code: 400, userInfo: nil))
+            return
+        }
+        guard let categoryEntity = NSEntityDescription.insertNewObject(forEntityName: "Category", into: context) as? Category else {
+            errorHandler(NSError(domain: "Invalid Category Entity", code: 400, userInfo: nil))
+            return
+        }
+        categoryEntity.name = task.category?.name
+        categoryEntity.color = taskEntity.category?.color
         
-        newTask.setValue(task.name, forKey: "name")
-//        newTask.setValue(task.name, forKey: "category")
-        newTask.setValue(task.status, forKey: "status")
-        newTask.setValue(task.completionDate, forKey: "completionDate")
+        taskEntity.category = categoryEntity
+        taskEntity.name = task.name
+        taskEntity.status = task.status
+        taskEntity.completionDate = task.completionDate
         
         do {
             try context.save()
@@ -72,6 +80,29 @@ class TaskCoreDataStore: TaskStoreProtocol {
                 tasks.append(task)
             }
             successHandler(tasks)
+        } catch let error {
+            errorHandler(error)
+        }
+    }
+    
+    func deleteTask(_ task: ListTask, successHandler: @escaping () -> Void, errorHandler: @escaping (Error?) -> Void) {
+        
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        
+        let predicate = NSPredicate(format: "name == %@ AND status == %@", task.name, task.status as CVarArg)
+        
+        request.predicate = predicate
+        request.returnsObjectsAsFaults = false
+        
+        let result = try? context.fetch(request)
+        for data in result as! [NSManagedObject] {
+            context.delete(data)
+        }
+        
+        do {
+            try context.save()
+            successHandler()
         } catch let error {
             errorHandler(error)
         }

@@ -43,14 +43,14 @@ class ToDoManagerRouter: ToDoManagerRouterInput {
 extension ToDoManagerRouter {
     private func passDataToAddTaskScene(segue: UIStoryboardSegue) {
         // NOTE: Teach the router how to pass data to the next scene
-        guard let addTaskViewController = segue.destination as? TaskManipulationViewController else { return }
+        guard let addTaskViewController = segue.destination as? TaskManipulationTableViewController else { return }
         addTaskViewController.output.flow = .isAddingTask
         addTaskViewController.output.selectedTask = viewController.output.selectedTask
     }
     
     private func passDataToTaskDetailsScene(segue: UIStoryboardSegue) {
         // NOTE: Teach the router how to pass data to the next scene
-        guard let addTaskViewController = segue.destination as? TaskManipulationViewController else { return }
+        guard let addTaskViewController = segue.destination as? TaskManipulationTableViewController else { return }
         addTaskViewController.output.flow = .isEditingTask
         addTaskViewController.output.selectedTask = viewController.output.selectedTask
     }

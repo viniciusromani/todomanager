@@ -9,6 +9,14 @@
 import Foundation
 
 public extension Date {
+    init?(withDayMonthYear string: String) {
+        if let date = DateFormatter.dayMonthYearFormat.date(from: string) {
+            self = date
+        } else {
+            return nil
+        }
+    }
+    
     var dayMonthYearStringValue: String {
         return DateFormatter.dayMonthYearFormat.string(from: self)
     }
