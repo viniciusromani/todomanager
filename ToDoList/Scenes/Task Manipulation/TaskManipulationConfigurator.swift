@@ -10,13 +10,13 @@ import UIKit
 
 // MARK: - Connect View, Interactor, and Presenter
 
-extension TaskManipulationViewController: TaskManipulationPresenterOutput {
+extension TaskManipulationTableViewController: TaskManipulationPresenterOutput {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         router.passDataToNextScene(segue: segue)
     }
 }
 
-extension TaskManipulationInteractor: TaskManipulationViewControllerOutput {
+extension TaskManipulationInteractor: TaskManipulationTableViewControllerOutput {
 }
 
 extension TaskManipulationPresenter: TaskManipulationInteractorOutput {
@@ -31,7 +31,7 @@ class TaskManipulationConfigurator {
     
     // MARK: - Configuration
     
-    func configure(viewController: TaskManipulationViewController) {
+    func configure(viewController: TaskManipulationTableViewController) {
         let router = TaskManipulationRouter()
         router.viewController = viewController
         

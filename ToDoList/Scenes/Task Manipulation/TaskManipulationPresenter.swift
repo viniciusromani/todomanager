@@ -11,11 +11,17 @@ import UIKit
 protocol TaskManipulationPresenterInput {
     func presentInitialState(_ response: TaskManipulation.FetchInitialState.Response)
     func presentTaskData(_ response: TaskManipulation.FetchTaskData.Response)
+    func presentStoredColor(_ response: TaskManipulation.StoreColor.Response)
+    func presentAddedTask(_ response: TaskManipulation.AddTask.Response.Success)
+    func presentErrorOnAdding(_ response: TaskManipulation.AddTask.Response.Error)
 }
 
 protocol TaskManipulationPresenterOutput: class {
     func displayInitialState(_ viewModel: TaskManipulation.FetchInitialState.ViewModel)
     func displayTaskData(_ viewModel: TaskManipulation.FetchTaskData.ViewModel)
+    func displayStoredColor(_ viewModel: TaskManipulation.StoreColor.ViewModel)
+    func displayAddedTask(_ viewModel: TaskManipulation.AddTask.ViewModel.Success)
+    func displayErrorOnAdding(_ viewModel: TaskManipulation.AddTask.ViewModel.Error)
 }
 
 class TaskManipulationPresenter: TaskManipulationPresenterInput {
@@ -47,5 +53,20 @@ class TaskManipulationPresenter: TaskManipulationPresenterInput {
                                                                  completionDate: task.completionDate?.dayMonthYearStringValue ?? "-",
                                                                  isCompleted: task.status)
         output.displayTaskData(viewModel)
+    }
+    
+    func presentStoredColor(_ response: TaskManipulation.StoreColor.Response) {
+        let viewModel = TaskManipulation.StoreColor.ViewModel()
+        output.displayStoredColor(viewModel)
+    }
+    
+    func presentAddedTask(_ response: TaskManipulation.AddTask.Response.Success) {
+        let viewModel = TaskManipulation.AddTask.ViewModel.Success(title: "Success", message: "Task successfully saved!")
+        output.displayAddedTask(viewModel)
+    }
+    
+    func presentErrorOnAdding(_ response: TaskManipulation.AddTask.Response.Error) {
+        let viewModel = TaskManipulation.AddTask.ViewModel.Error(title: "Error", message: response.localizedError)
+        output.displayErrorOnAdding(viewModel)
     }
 }

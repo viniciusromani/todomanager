@@ -13,7 +13,7 @@ protocol TaskManipulationRouterInput {
 }
 
 class TaskManipulationRouter: TaskManipulationRouterInput {
-    weak var viewController: TaskManipulationViewController!
+    weak var viewController: TaskManipulationTableViewController!
     
     // MARK: - Navigation
     

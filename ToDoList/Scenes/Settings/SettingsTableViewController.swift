@@ -57,9 +57,7 @@ class SettingsTableViewController: UITableViewController {
 
 extension SettingsTableViewController: SettingsTableViewControllerInput {
     
-    func displayStoredColor(_ viewModel: Settings.StoreColor.ViewModel) {
-        
-    }
+    func displayStoredColor(_ viewModel: Settings.StoreColor.ViewModel) { }
     
     func displaySavedCategory(_ viewModel: Settings.SaveCategory.ViewModel.Success) {
         let okAction = AlertActionBuilder(dismissWithTitle: "OK").build()
