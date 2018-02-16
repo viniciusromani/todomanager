@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
 struct ListCategory {
     let name: String
-    let color: String
+    let color: UIColor
 }

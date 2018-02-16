@@ -62,7 +62,7 @@ extension ToDoManagerViewController: ToDoManagerViewControllerInput {
             let request = ToDoManager.DeleteTask.Request(indexPath: viewModel.selectedIndexPath)
             self.output.deleteTask(request)
         }
-        let noAction = UIAlertAction(title: viewModel.noActionData.title, style: viewModel.noActionData.style)
+        let noAction = AlertActionBuilder(dismissWithTitle: viewModel.noActionData.title).build()
         
         let willDeleteAlert = AlertBuilder()
                               .setTitle(viewModel.title)

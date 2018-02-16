@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 struct ListTask {
     let name: String
@@ -20,7 +21,7 @@ extension ListTask {
     init(with managedObject: NSManagedObject) {
         name = managedObject.value(forKey: "name") as! String
         completionDate = managedObject.value(forKey: "completionDate") as? Date
-        category = ListCategory(name: "testando", color: "z")
+        category = ListCategory(name: "testando", color: UIColor.blue)
         status = managedObject.value(forKey: "status") as! Bool
     }
 }

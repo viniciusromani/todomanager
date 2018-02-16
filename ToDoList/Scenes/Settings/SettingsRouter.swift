@@ -2,7 +2,7 @@
 //  SettingsRouter.swift
 //  ToDoList
 //
-//  Created by Vinicius Romani on 15/02/18.
+//  Created by Vinicius Romani on 16/02/18.
 //  Copyright (c) 2018 Vinicius Romani. All rights reserved.
 //
 
@@ -13,7 +13,7 @@ protocol SettingsRouterInput {
 }
 
 class SettingsRouter: SettingsRouterInput {
-    weak var viewController: SettingsViewController!
+    weak var viewController: SettingsTableViewController!
     
     // MARK: - Navigation
     

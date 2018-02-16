@@ -17,12 +17,6 @@
 		A11B6BFC2035E6EC004D9C3A /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BFB2035E6EC004D9C3A /* Flow.swift */; };
 		A11B6C002035FCCB004D9C3A /* TaskWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6BFF2035FCCB004D9C3A /* TaskWorker.swift */; };
 		A11B6C022036015A004D9C3A /* TaskCoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6C012036015A004D9C3A /* TaskCoreDataStore.swift */; };
-		A11B6C0B2036255D004D9C3A /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6C042036255D004D9C3A /* SettingsConfigurator.swift */; };
-		A11B6C0C2036255D004D9C3A /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6C052036255D004D9C3A /* SettingsInteractor.swift */; };
-		A11B6C0D2036255D004D9C3A /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6C062036255D004D9C3A /* SettingsModels.swift */; };
-		A11B6C0E2036255D004D9C3A /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6C072036255D004D9C3A /* SettingsPresenter.swift */; };
-		A11B6C0F2036255D004D9C3A /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6C082036255D004D9C3A /* SettingsRouter.swift */; };
-		A11B6C102036255D004D9C3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11B6C092036255D004D9C3A /* SettingsViewController.swift */; };
 		A126C99E2034A43600BBE225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126C99D2034A43600BBE225 /* AppDelegate.swift */; };
 		A126C9A32034A43600BBE225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A126C9A12034A43600BBE225 /* Main.storyboard */; };
 		A126C9A62034A43600BBE225 /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A126C9A42034A43600BBE225 /* ToDoList.xcdatamodeld */; };
@@ -43,6 +37,18 @@
 		A126C9D82034CD5300BBE225 /* DateFormatter+ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126C9D72034CD5300BBE225 /* DateFormatter+ToDoList.swift */; };
 		A126C9DA2034CD5D00BBE225 /* Date+ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126C9D92034CD5D00BBE225 /* Date+ToDoList.swift */; };
 		A126C9DD2034DABA00BBE225 /* AlertBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A126C9DC2034DABA00BBE225 /* AlertBuilder.swift */; };
+		A129D3FF2036EC4900032441 /* UIView+ExtraAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D3FE2036EC4900032441 /* UIView+ExtraAttributes.swift */; };
+		A129D4072036EEAC00032441 /* SettingsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D4002036EEAC00032441 /* SettingsConfigurator.swift */; };
+		A129D4082036EEAC00032441 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D4012036EEAC00032441 /* SettingsInteractor.swift */; };
+		A129D4092036EEAC00032441 /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D4022036EEAC00032441 /* SettingsModels.swift */; };
+		A129D40A2036EEAC00032441 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D4032036EEAC00032441 /* SettingsPresenter.swift */; };
+		A129D40B2036EEAC00032441 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D4042036EEAC00032441 /* SettingsRouter.swift */; };
+		A129D40C2036EEAC00032441 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D4052036EEAC00032441 /* SettingsTableViewController.swift */; };
+		A129D4112036F61800032441 /* ColorPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = A129D4102036F61800032441 /* ColorPicker.xib */; };
+		A129D4132036F74100032441 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D4122036F74100032441 /* ColorPicker.swift */; };
+		A129D4152036F9F000032441 /* UIColor+ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D4142036F9F000032441 /* UIColor+ToDoList.swift */; };
+		A129D41720370CEA00032441 /* CategoryWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D41620370CEA00032441 /* CategoryWorker.swift */; };
+		A129D41920370D3E00032441 /* CategoryCoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A129D41820370D3E00032441 /* CategoryCoreDataStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,12 +64,6 @@
 		A11B6BFB2035E6EC004D9C3A /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 		A11B6BFF2035FCCB004D9C3A /* TaskWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskWorker.swift; sourceTree = "<group>"; };
 		A11B6C012036015A004D9C3A /* TaskCoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCoreDataStore.swift; sourceTree = "<group>"; };
-		A11B6C042036255D004D9C3A /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
-		A11B6C052036255D004D9C3A /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
-		A11B6C062036255D004D9C3A /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
-		A11B6C072036255D004D9C3A /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
-		A11B6C082036255D004D9C3A /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
-		A11B6C092036255D004D9C3A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A126C99A2034A43600BBE225 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A126C99D2034A43600BBE225 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A126C9A22034A43600BBE225 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +86,18 @@
 		A126C9D72034CD5300BBE225 /* DateFormatter+ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+ToDoList.swift"; sourceTree = "<group>"; };
 		A126C9D92034CD5D00BBE225 /* Date+ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ToDoList.swift"; sourceTree = "<group>"; };
 		A126C9DC2034DABA00BBE225 /* AlertBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBuilder.swift; sourceTree = "<group>"; };
+		A129D3FE2036EC4900032441 /* UIView+ExtraAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ExtraAttributes.swift"; sourceTree = "<group>"; };
+		A129D4002036EEAC00032441 /* SettingsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsConfigurator.swift; sourceTree = "<group>"; };
+		A129D4012036EEAC00032441 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		A129D4022036EEAC00032441 /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
+		A129D4032036EEAC00032441 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		A129D4042036EEAC00032441 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		A129D4052036EEAC00032441 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		A129D4102036F61800032441 /* ColorPicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPicker.xib; sourceTree = "<group>"; };
+		A129D4122036F74100032441 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		A129D4142036F9F000032441 /* UIColor+ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ToDoList.swift"; sourceTree = "<group>"; };
+		A129D41620370CEA00032441 /* CategoryWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryWorker.swift; sourceTree = "<group>"; };
+		A129D41820370D3E00032441 /* CategoryCoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCoreDataStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				A11B6BFF2035FCCB004D9C3A /* TaskWorker.swift */,
+				A129D41620370CEA00032441 /* CategoryWorker.swift */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -142,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				A11B6C012036015A004D9C3A /* TaskCoreDataStore.swift */,
+				A129D41820370D3E00032441 /* CategoryCoreDataStore.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -149,12 +163,12 @@
 		A11B6C0320362518004D9C3A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A11B6C092036255D004D9C3A /* SettingsViewController.swift */,
-				A11B6C052036255D004D9C3A /* SettingsInteractor.swift */,
-				A11B6C072036255D004D9C3A /* SettingsPresenter.swift */,
-				A11B6C042036255D004D9C3A /* SettingsConfigurator.swift */,
-				A11B6C062036255D004D9C3A /* SettingsModels.swift */,
-				A11B6C082036255D004D9C3A /* SettingsRouter.swift */,
+				A129D4052036EEAC00032441 /* SettingsTableViewController.swift */,
+				A129D4012036EEAC00032441 /* SettingsInteractor.swift */,
+				A129D4032036EEAC00032441 /* SettingsPresenter.swift */,
+				A129D4002036EEAC00032441 /* SettingsConfigurator.swift */,
+				A129D4022036EEAC00032441 /* SettingsModels.swift */,
+				A129D4042036EEAC00032441 /* SettingsRouter.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -270,6 +284,8 @@
 			children = (
 				A126C9D92034CD5D00BBE225 /* Date+ToDoList.swift */,
 				A126C9D72034CD5300BBE225 /* DateFormatter+ToDoList.swift */,
+				A129D4142036F9F000032441 /* UIColor+ToDoList.swift */,
+				A129D3FE2036EC4900032441 /* UIView+ExtraAttributes.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -277,9 +293,27 @@
 		A126C9DB2034DAA500BBE225 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A126C9DC2034DABA00BBE225 /* AlertBuilder.swift */,
+				A129D40F2036F5FE00032441 /* Color Picker */,
+				A129D40E2036F5F800032441 /* Alert */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		A129D40E2036F5F800032441 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				A126C9DC2034DABA00BBE225 /* AlertBuilder.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		A129D40F2036F5FE00032441 /* Color Picker */ = {
+			isa = PBXGroup;
+			children = (
+				A129D4102036F61800032441 /* ColorPicker.xib */,
+				A129D4122036F74100032441 /* ColorPicker.swift */,
+			);
+			path = "Color Picker";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +382,7 @@
 				A126C9AB2034A43600BBE225 /* LaunchScreen.storyboard in Resources */,
 				A126C9A82034A43600BBE225 /* Assets.xcassets in Resources */,
 				A126C9A32034A43600BBE225 /* Main.storyboard in Resources */,
+				A129D4112036F61800032441 /* ColorPicker.xib in Resources */,
 				A126C9CA2034B98D00BBE225 /* ToDoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,37 +461,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A129D41920370D3E00032441 /* CategoryCoreDataStore.swift in Sources */,
 				A11B6C002035FCCB004D9C3A /* TaskWorker.swift in Sources */,
 				A126C9C52034B2B900BBE225 /* ToDoTableView.swift in Sources */,
+				A129D4092036EEAC00032441 /* SettingsModels.swift in Sources */,
 				A126C9A62034A43600BBE225 /* ToDoList.xcdatamodeld in Sources */,
+				A129D4082036EEAC00032441 /* SettingsInteractor.swift in Sources */,
+				A129D4072036EEAC00032441 /* SettingsConfigurator.swift in Sources */,
 				A126C9C02034B08300BBE225 /* ToDoManagerRouter.swift in Sources */,
+				A129D40C2036EEAC00032441 /* SettingsTableViewController.swift in Sources */,
 				A126C9C12034B08300BBE225 /* ToDoManagerViewController.swift in Sources */,
 				A126C9BC2034B08300BBE225 /* ToDoManagerConfigurator.swift in Sources */,
+				A129D3FF2036EC4900032441 /* UIView+ExtraAttributes.swift in Sources */,
+				A129D4152036F9F000032441 /* UIColor+ToDoList.swift in Sources */,
 				A126C9BD2034B08300BBE225 /* ToDoManagerInteractor.swift in Sources */,
-				A11B6C0B2036255D004D9C3A /* SettingsConfigurator.swift in Sources */,
-				A11B6C0D2036255D004D9C3A /* SettingsModels.swift in Sources */,
-				A11B6C0F2036255D004D9C3A /* SettingsRouter.swift in Sources */,
+				A129D40B2036EEAC00032441 /* SettingsRouter.swift in Sources */,
 				A11B6BF72035E504004D9C3A /* TaskManipulationPresenter.swift in Sources */,
 				A11B6BF82035E504004D9C3A /* TaskManipulationRouter.swift in Sources */,
 				A126C9BE2034B08300BBE225 /* ToDoManagerModels.swift in Sources */,
 				A11B6BF42035E504004D9C3A /* TaskManipulationConfigurator.swift in Sources */,
-				A11B6C0E2036255D004D9C3A /* SettingsPresenter.swift in Sources */,
 				A11B6BF92035E504004D9C3A /* TaskManipulationViewController.swift in Sources */,
 				A126C9BF2034B08300BBE225 /* ToDoManagerPresenter.swift in Sources */,
 				A11B6BF62035E504004D9C3A /* TaskManipulationModels.swift in Sources */,
+				A129D41720370CEA00032441 /* CategoryWorker.swift in Sources */,
 				A126C9DA2034CD5D00BBE225 /* Date+ToDoList.swift in Sources */,
 				A11B6C022036015A004D9C3A /* TaskCoreDataStore.swift in Sources */,
-				A11B6C102036255D004D9C3A /* SettingsViewController.swift in Sources */,
 				A126C9D52034C63E00BBE225 /* Task.swift in Sources */,
 				A126C99E2034A43600BBE225 /* AppDelegate.swift in Sources */,
 				A126C9D82034CD5300BBE225 /* DateFormatter+ToDoList.swift in Sources */,
 				A126C9DD2034DABA00BBE225 /* AlertBuilder.swift in Sources */,
+				A129D4132036F74100032441 /* ColorPicker.swift in Sources */,
 				A126C9D02034C15A00BBE225 /* R.generated.swift in Sources */,
 				A126C9C82034B98000BBE225 /* ToDoTableViewCell.swift in Sources */,
 				A11B6BF52035E504004D9C3A /* TaskManipulationInteractor.swift in Sources */,
 				A126C9D32034C61100BBE225 /* Category.swift in Sources */,
 				A11B6BFC2035E6EC004D9C3A /* Flow.swift in Sources */,
-				A11B6C0C2036255D004D9C3A /* SettingsInteractor.swift in Sources */,
+				A129D40A2036EEAC00032441 /* SettingsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
