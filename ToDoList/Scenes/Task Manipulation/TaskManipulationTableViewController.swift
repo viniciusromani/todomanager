@@ -97,7 +97,9 @@ extension TaskManipulationTableViewController: TaskManipulationTableViewControll
     func displayStoredColor(_ viewModel: TaskManipulation.StoreColor.ViewModel) { }
     
     func displayAddedTask(_ viewModel: TaskManipulation.AddTask.ViewModel.Success) {
-        let okAction = AlertActionBuilder(dismissWithTitle: "OK").build()
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            self.navigationController?.popViewController(animated: true)
+        }
         let alert = AlertBuilder()
                     .setTitle(viewModel.title)
                     .setMessage(viewModel.message)
@@ -119,16 +121,16 @@ extension TaskManipulationTableViewController: TaskManipulationTableViewControll
     }
     
     func displayDeletedTask(_ viewModel: TaskManipulation.DeleteTask.ViewModel.Success) {
-        let okAction = AlertActionBuilder(dismissWithTitle: "OK").build()
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            self.navigationController?.popViewController(animated: true)
+        }
         let alert = AlertBuilder()
                     .setTitle(viewModel.title)
                     .setMessage(viewModel.message)
                     .setAction(okAction)
                     .build()
         
-        present(alert, animated: true) {
-            self.navigationController?.popViewController(animated: true)
-        }
+        present(alert, animated: true, completion: nil)
     }
     
     func displayErrorOnDeleting(_ viewModel: TaskManipulation.DeleteTask.ViewModel.Error) {
