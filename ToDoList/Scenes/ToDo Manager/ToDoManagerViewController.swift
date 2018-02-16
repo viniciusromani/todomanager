@@ -11,7 +11,8 @@ import UIKit
 protocol ToDoManagerViewControllerInput {
     func displayTasks(_ viewModel: ToDoManager.FetchTasks.ViewModel)
     func displayWillDeleteTask(_ viewModel: ToDoManager.WillDeleteTask.ViewModel)
-    func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel)
+    func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel.Success)
+    func displayErrorOnDelete(_ viewModel: ToDoManager.DeleteTask.ViewModel.Error)
     func displaySelectedRow(_ viewModel: ToDoManager.DidSelectRow.ViewModel)
 }
 
@@ -63,7 +64,8 @@ extension ToDoManagerViewController: ToDoManagerViewControllerInput {
     
     func displayWillDeleteTask(_ viewModel: ToDoManager.WillDeleteTask.ViewModel) {
         let yesAction = UIAlertAction(title: viewModel.yesActionData.title, style: viewModel.yesActionData.style) { action in
-            let request = ToDoManager.DeleteTask.Request(indexPath: viewModel.selectedIndexPath)
+            let request = ToDoManager.DeleteTask.Request(section: viewModel.section,
+                                                         selectedRow: viewModel.selectedRow)
             self.output.deleteTask(request)
         }
         let noAction = AlertActionBuilder(dismissWithTitle: viewModel.noActionData.title).build()
@@ -76,9 +78,20 @@ extension ToDoManagerViewController: ToDoManagerViewControllerInput {
         present(willDeleteAlert, animated: true, completion: nil)
     }
     
-    func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel) {
+    func displayDeletedTask(_ viewModel: ToDoManager.DeleteTask.ViewModel.Success) {
         toDoTableView.displayedAvailableTasks = viewModel.availableTasks
         toDoTableView.displayedCompletedTasks = viewModel.completedTasks
+    }
+    
+    func displayErrorOnDelete(_ viewModel: ToDoManager.DeleteTask.ViewModel.Error) {
+        let okAction = AlertActionBuilder(dismissWithTitle: "OK").build()
+        
+        let willDeleteAlert = AlertBuilder()
+                              .setTitle(viewModel.title)
+                              .setMessage(viewModel.message)
+                              .setAction(okAction)
+                              .build()
+        present(willDeleteAlert, animated: true, completion: nil)
     }
     
     func displaySelectedRow(_ viewModel: ToDoManager.DidSelectRow.ViewModel) {
@@ -104,7 +117,8 @@ extension ToDoManagerViewController: ToDoTableViewDelegate {
     }
     
     func willDeleteItem(at indexPath: IndexPath, in tableView: UITableView) {
-        let request = ToDoManager.WillDeleteTask.Request(selectedIndexPath: indexPath)
+        let request = ToDoManager.WillDeleteTask.Request(section: toDoTableView.sectionMapper[indexPath.section],
+                                                         selectedRow: indexPath.row)
         output.willDeleteTask(request)
     }
 }

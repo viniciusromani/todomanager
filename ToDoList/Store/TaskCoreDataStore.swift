@@ -84,4 +84,27 @@ class TaskCoreDataStore: TaskStoreProtocol {
             errorHandler(error)
         }
     }
+    
+    func deleteTask(_ task: ListTask, successHandler: @escaping () -> Void, errorHandler: @escaping (Error?) -> Void) {
+        
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        
+        let predicate = NSPredicate(format: "name == %@ AND status == %@", task.name, task.status as CVarArg)
+        
+        request.predicate = predicate
+        request.returnsObjectsAsFaults = false
+        
+        let result = try? context.fetch(request)
+        for data in result as! [NSManagedObject] {
+            context.delete(data)
+        }
+        
+        do {
+            try context.save()
+            successHandler()
+        } catch let error {
+            errorHandler(error)
+        }
+    }
 }

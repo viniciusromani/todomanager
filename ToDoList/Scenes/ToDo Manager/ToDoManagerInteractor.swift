@@ -20,7 +20,8 @@ protocol ToDoManagerInteractorInput {
 protocol ToDoManagerInteractorOutput {
     func presentTasks(_ response: ToDoManager.FetchTasks.Response)
     func presentWillDeleteTask(_ response: ToDoManager.WillDeleteTask.Response)
-    func presentDeletedTask(_ response: ToDoManager.DeleteTask.Response)
+    func presentDeletedTask(_ response: ToDoManager.DeleteTask.Response.Success)
+    func presentErrorOnDelete(_ response: ToDoManager.DeleteTask.Response.Error)
     func presentSelectedRow(_ response: ToDoManager.DidSelectRow.Response)
 }
 
@@ -61,19 +62,31 @@ class ToDoManagerInteractor: ToDoManagerInteractorInput {
     }
     
     func willDeleteTask(_ request: ToDoManager.WillDeleteTask.Request) {
-        let response = ToDoManager.WillDeleteTask.Response(selectedIndexPath: request.selectedIndexPath)
+        let response = ToDoManager.WillDeleteTask.Response(section: request.section,
+                                                           selectedRow: request.selectedRow)
         output.presentWillDeleteTask(response)
     }
     
     func deleteTask(_ request: ToDoManager.DeleteTask.Request) {
         
-        // TIRAR DO CORE DATA
-        currentAvailableTasks.remove(at: 0)
+        var selectedTask: ListTask
+        switch request.section {
+            case .available:
+                currentAvailableTasks.remove(at: request.selectedRow)
+                selectedTask = currentAvailableTasks[request.selectedRow]
+            case .completed:
+                currentCompletedTasks.remove(at: request.selectedRow)
+                selectedTask = currentCompletedTasks[request.selectedRow]
+        }
         
-        // PARTE COMUM
-        let response = ToDoManager.DeleteTask.Response(availableTasks: currentAvailableTasks,
-                                                       completedTasks: currentCompletedTasks)
-        output.presentDeletedTask(response)
+        tasksWorker.deleteTask(selectedTask, successHandler: {
+            let response = ToDoManager.DeleteTask.Response.Success(availableTasks: self.currentAvailableTasks,
+                                                                   completedTasks: self.currentCompletedTasks)
+            self.output.presentDeletedTask(response)
+        }) { error in
+            let response = ToDoManager.DeleteTask.Response.Error(localizedMessage: error?.localizedDescription ?? "")
+            self.output.presentErrorOnDelete(response)
+        }
     }
     
     func didSelectRow(_ request: ToDoManager.DidSelectRow.Request) {
