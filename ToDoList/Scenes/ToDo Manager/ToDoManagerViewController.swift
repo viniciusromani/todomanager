@@ -47,6 +47,11 @@ class ToDoManagerViewController: UIViewController {
         
         configure(toDoTableView: toDoTableView)
         setPullToRefresh()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         fetchTasks()
     }
 }

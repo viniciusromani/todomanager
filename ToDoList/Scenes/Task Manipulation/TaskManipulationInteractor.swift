@@ -16,16 +16,17 @@ protocol TaskManipulationInteractorInput {
     func fetchTaskData(_ request: TaskManipulation.FetchTaskData.Request)
     func storeColor(_ request: TaskManipulation.StoreColor.Request)
     func addTask(_ request: TaskManipulation.AddTask.Request)
+    func deleteTask(_ request: TaskManipulation.DeleteTask.Request)
 }
 
 protocol TaskManipulationInteractorOutput {
     func presentInitialState(_ response: TaskManipulation.FetchInitialState.Response)
     func presentTaskData(_ response: TaskManipulation.FetchTaskData.Response)
-    
     func presentStoredColor(_ response: TaskManipulation.StoreColor.Response)
-    
     func presentAddedTask(_ response: TaskManipulation.AddTask.Response.Success)
     func presentErrorOnAdding(_ response: TaskManipulation.AddTask.Response.Error)
+    func presentDeletedTask(_ response: TaskManipulation.DeleteTask.Response.Success)
+    func presentErrorOnDeleting(_ response: TaskManipulation.DeleteTask.Response.Error)
 }
 
 class TaskManipulationInteractor: TaskManipulationInteractorInput {
@@ -69,6 +70,18 @@ class TaskManipulationInteractor: TaskManipulationInteractorInput {
         }) { error in
             let response = TaskManipulation.AddTask.Response.Error(localizedError: error?.localizedDescription ?? "")
             self.output.presentErrorOnAdding(response)
+        }
+    }
+    
+    func deleteTask(_ request: TaskManipulation.DeleteTask.Request) {
+        guard let task = selectedTask else { return }
+        
+        taskWorker.deleteTask(task, successHandler: {
+            let response = TaskManipulation.DeleteTask.Response.Success()
+            self.output.presentDeletedTask(response)
+        }) { error in
+            let response = TaskManipulation.DeleteTask.Response.Error(localizedError: error?.localizedDescription ?? "")
+            self.output.presentErrorOnDeleting(response)
         }
     }
 }

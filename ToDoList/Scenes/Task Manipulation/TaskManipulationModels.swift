@@ -73,9 +73,7 @@ struct TaskManipulation {
     }
     
     struct DeleteTask {
-        struct Request {
-            let indexPath: IndexPath
-        }
+        struct Request { }
         struct Response {
             struct Success { }
             struct Error {

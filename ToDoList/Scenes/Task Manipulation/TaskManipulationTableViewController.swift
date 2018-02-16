@@ -14,6 +14,8 @@ protocol TaskManipulationTableViewControllerInput {
     func displayStoredColor(_ viewModel: TaskManipulation.StoreColor.ViewModel)
     func displayAddedTask(_ viewModel: TaskManipulation.AddTask.ViewModel.Success)
     func displayErrorOnAdding(_ viewModel: TaskManipulation.AddTask.ViewModel.Error)
+    func displayDeletedTask(_ viewModel: TaskManipulation.DeleteTask.ViewModel.Success)
+    func displayErrorOnDeleting(_ viewModel: TaskManipulation.DeleteTask.ViewModel.Error)
 }
 
 protocol TaskManipulationTableViewControllerOutput {
@@ -24,6 +26,7 @@ protocol TaskManipulationTableViewControllerOutput {
     func fetchTaskData(_ request: TaskManipulation.FetchTaskData.Request)
     func storeColor(_ request: TaskManipulation.StoreColor.Request)
     func addTask(_ request: TaskManipulation.AddTask.Request)
+    func deleteTask(_ request: TaskManipulation.DeleteTask.Request)
 }
 
 class TaskManipulationTableViewController: UITableViewController {
@@ -96,10 +99,10 @@ extension TaskManipulationTableViewController: TaskManipulationTableViewControll
     func displayAddedTask(_ viewModel: TaskManipulation.AddTask.ViewModel.Success) {
         let okAction = AlertActionBuilder(dismissWithTitle: "OK").build()
         let alert = AlertBuilder()
-            .setTitle(viewModel.title)
-            .setMessage(viewModel.message)
-            .setAction(okAction)
-            .build()
+                    .setTitle(viewModel.title)
+                    .setMessage(viewModel.message)
+                    .setAction(okAction)
+                    .build()
         
         present(alert, animated: true, completion: nil)
     }
@@ -107,10 +110,34 @@ extension TaskManipulationTableViewController: TaskManipulationTableViewControll
     func displayErrorOnAdding(_ viewModel: TaskManipulation.AddTask.ViewModel.Error) {
         let okAction = AlertActionBuilder(dismissWithTitle: "OK").build()
         let alert = AlertBuilder()
-            .setTitle(viewModel.title)
-            .setMessage(viewModel.message)
-            .setAction(okAction)
-            .build()
+                    .setTitle(viewModel.title)
+                    .setMessage(viewModel.message)
+                    .setAction(okAction)
+                    .build()
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func displayDeletedTask(_ viewModel: TaskManipulation.DeleteTask.ViewModel.Success) {
+        let okAction = AlertActionBuilder(dismissWithTitle: "OK").build()
+        let alert = AlertBuilder()
+                    .setTitle(viewModel.title)
+                    .setMessage(viewModel.message)
+                    .setAction(okAction)
+                    .build()
+        
+        present(alert, animated: true) {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func displayErrorOnDeleting(_ viewModel: TaskManipulation.DeleteTask.ViewModel.Error) {
+        let okAction = AlertActionBuilder(dismissWithTitle: "OK").build()
+        let alert = AlertBuilder()
+                    .setTitle(viewModel.title)
+                    .setMessage(viewModel.message)
+                    .setAction(okAction)
+                    .build()
         
         present(alert, animated: true, completion: nil)
     }
@@ -162,7 +189,8 @@ extension TaskManipulationTableViewController {
     }
     
     private func deleteTask() {
-        
+        let request = TaskManipulation.DeleteTask.Request()
+        output.deleteTask(request)
     }
 }
 

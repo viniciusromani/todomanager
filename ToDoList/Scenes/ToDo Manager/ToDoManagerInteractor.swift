@@ -72,11 +72,11 @@ class ToDoManagerInteractor: ToDoManagerInteractorInput {
         var selectedTask: ListTask
         switch request.section {
             case .available:
-                currentAvailableTasks.remove(at: request.selectedRow)
                 selectedTask = currentAvailableTasks[request.selectedRow]
+                currentAvailableTasks.remove(at: request.selectedRow)
             case .completed:
-                currentCompletedTasks.remove(at: request.selectedRow)
                 selectedTask = currentCompletedTasks[request.selectedRow]
+                currentCompletedTasks.remove(at: request.selectedRow)
         }
         
         tasksWorker.deleteTask(selectedTask, successHandler: {

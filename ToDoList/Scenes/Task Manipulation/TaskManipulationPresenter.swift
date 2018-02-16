@@ -14,6 +14,8 @@ protocol TaskManipulationPresenterInput {
     func presentStoredColor(_ response: TaskManipulation.StoreColor.Response)
     func presentAddedTask(_ response: TaskManipulation.AddTask.Response.Success)
     func presentErrorOnAdding(_ response: TaskManipulation.AddTask.Response.Error)
+    func presentDeletedTask(_ response: TaskManipulation.DeleteTask.Response.Success)
+    func presentErrorOnDeleting(_ response: TaskManipulation.DeleteTask.Response.Error)
 }
 
 protocol TaskManipulationPresenterOutput: class {
@@ -22,6 +24,8 @@ protocol TaskManipulationPresenterOutput: class {
     func displayStoredColor(_ viewModel: TaskManipulation.StoreColor.ViewModel)
     func displayAddedTask(_ viewModel: TaskManipulation.AddTask.ViewModel.Success)
     func displayErrorOnAdding(_ viewModel: TaskManipulation.AddTask.ViewModel.Error)
+    func displayDeletedTask(_ viewModel: TaskManipulation.DeleteTask.ViewModel.Success)
+    func displayErrorOnDeleting(_ viewModel: TaskManipulation.DeleteTask.ViewModel.Error)
 }
 
 class TaskManipulationPresenter: TaskManipulationPresenterInput {
@@ -68,5 +72,15 @@ class TaskManipulationPresenter: TaskManipulationPresenterInput {
     func presentErrorOnAdding(_ response: TaskManipulation.AddTask.Response.Error) {
         let viewModel = TaskManipulation.AddTask.ViewModel.Error(title: "Error", message: response.localizedError)
         output.displayErrorOnAdding(viewModel)
+    }
+    
+    func presentDeletedTask(_ response: TaskManipulation.DeleteTask.Response.Success) {
+        let viewModel = TaskManipulation.DeleteTask.ViewModel.Success(title: "Success", message: "Task was deleted!")
+        output.displayDeletedTask(viewModel)
+    }
+    
+    func presentErrorOnDeleting(_ response: TaskManipulation.DeleteTask.Response.Error) {
+        let viewModel = TaskManipulation.DeleteTask.ViewModel.Error(title: "Error", message: response.localizedError)
+        output.displayErrorOnDeleting(viewModel)
     }
 }
